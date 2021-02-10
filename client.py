@@ -81,6 +81,7 @@ class GUI:
         self.enter_text_widget.pack(side='left', pady=5 , padx = 2)
         self.enter_text_widget.bind('<Return>', self.on_enter_key_pressed)
         Label(frame, text='© auther:aashish(vy)', font=("Serif", 12)).pack(side='bottom', anchor='sw')
+        Label(frame, text='insta:- aashish_vishnu_yash', font=("Serif", 9)).pack(side='bottom', anchor='sw')
         frame.pack(side='top')
 
     def on_join(self):
