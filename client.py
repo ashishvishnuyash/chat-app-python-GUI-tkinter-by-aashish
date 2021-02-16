@@ -28,6 +28,8 @@ class GUI:
     def initialize_gui(self): # GUI initializer
         self.root.title("Group Chat by vishnuyash") 
         self.root.resizable(0, 0)
+        self.root.configure(bg="black")
+        self.myname()
         self.display_name_section()
         self.display_chat_box()
         
@@ -54,35 +56,39 @@ class GUI:
                 self.chat_transcript_area.yview(END)
 
         so.close()
+    def myname(self):
+        frameo= Frame()
+        Label(frameo,text='chat app by aashish_vishnu yash', font=("times new roman",15),bg='black',fg='white').pack( fill='x')
+        frameo.pack(side='top', anchor='n',fill='x')
 
     def display_name_section(self):
-        frame = Frame()
-        Label(frame, text='Enter your name:', font=("Helvetica", 16)).pack(side='left', padx=10)
-        self.name_widget = Entry(frame, width=50, borderwidth=2)
-        self.name_widget.pack(side='left', anchor='e')
+        frame = Frame(bg='blue')
+        Label(frame, text='Enter your name:', font=("times new roman", 16),bg='blue',fg='white').pack(side='left', padx=10)
+        self.name_widget = Entry(frame, width=70, borderwidth=2)
+        self.name_widget.pack(side='left', anchor='e',fill='x')
         self.join_button = Button(frame, text="Join", width=10, command=self.on_join).pack(side='left')
-        frame.pack(side='top', anchor='nw')
+        frame.pack(side='top', anchor='n',fill='x')
 
     def display_chat_box(self):
-        frame = Frame()
-        Label(frame, text='Chat Box:', font=("Serif", 12)).pack(side='top', anchor='w')
+        frame = Frame(bg='blue')
+        Label(frame, text='Chat Box:', font=("times new roman", 16),bg='blue',fg='white').pack( fill='x')
         self.chat_transcript_area = Text(frame, width=60, height=10, font=("Serif", 12))
         scrollbar = Scrollbar(frame, command=self.chat_transcript_area.yview, orient=VERTICAL)
         self.chat_transcript_area.config(yscrollcommand=scrollbar.set)
         self.chat_transcript_area.bind('<KeyPress>', lambda e: 'break')
-        self.chat_transcript_area.pack(side='left', padx=10)
+        self.chat_transcript_area.pack(side='left', padx=100)
         scrollbar.pack(side='right', fill='y')
-        frame.pack(side='top')
+        frame.pack(side='top',anchor='n')
 
     def display_chat_entry_box(self):
-        frame = Frame()
-        Label(frame, text='Enter message:', font=("Serif", 12)).pack(side='top', anchor='w')
-        self.enter_text_widget = Text(frame, width=55, height=3, font=("Serif", 12))
-        self.enter_text_widget.pack(side='left', pady=5 , padx = 2)
+        frame = Frame(bg='blue')
+        Label(frame, text='Enter message:', font=("Serif", 12),bg='blue',fg='white').pack( anchor='w',fill='x')
+        self.enter_text_widget = Text(frame, width=60, height=3, font=("Serif", 12))
+        self.enter_text_widget.pack( pady=5 , padx = 2)
         self.enter_text_widget.bind('<Return>', self.on_enter_key_pressed)
-        Label(frame, text='© auther:aashish(vy)', font=("Serif", 12)).pack(side='bottom', anchor='sw')
-        Label(frame, text='insta:- aashish_vishnu_yash', font=("Serif", 9)).pack(side='bottom', anchor='sw')
-        frame.pack(side='top')
+        Label(frame, text='© auther:aashish(vy)', font=("Serif", 12)).pack(fill='x', anchor='sw')
+        Label(frame, text='insta:- aashish_vishnu_yash', font=("Serif", 9)).pack(fill='x', anchor='sw')
+        frame.pack(side='top',fill='x')
 
     def on_join(self):
         if len(self.name_widget.get()) == 0:
